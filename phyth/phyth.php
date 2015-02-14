@@ -8,7 +8,7 @@
 	echo apiCall($_POST['function'], $data);
 
 function apiCall($function, $data){	
-	$cmd = "python modules/".$function.".py"." ".$data;
+	$cmd = "python2.6 modules/".$function.".py"." ".$data;
 	$response = exec($cmd);
 	return $response;
 }
