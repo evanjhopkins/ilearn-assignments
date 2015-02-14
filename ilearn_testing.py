@@ -44,10 +44,47 @@ def main():
 	for aclass in current_semester:
 		class_name =  aclass[0][0].text 
 		class_id = aclass[1].get("id")
-		classes[i] = {'name':class_name, 'id':class_id}
-		i = i+1
 
-	print classes	
+		# open class page
+		br.open("https://ilearn.marist.edu/portal/site/"+class_id)
+
+		# go to assignments page
+		br.follow_link(text_regex="Assignments")
+
+		# getting raw source to parse out data
+		response = br.response()
+		source = response.read()
+		tree = html.fromstring(source)
+
+		# get link to iframe containing actual assignments page and go to it
+		src_url = tree.cssselect("iframe")[0].attrib['src']
+		br.open(src_url)
+
+		# getting raw source to parse out data
+		response = br.response()
+		source = response.read()
+		tree = html.fromstring(source)
+
+		titles = tree.xpath('//td[@headers="title"]')
+		statuss = tree.xpath('//td[@headers="status"]')
+		dueDates =  tree.xpath('//td[@headers="dueDate"]')
+		openDates = tree.xpath('//td[@headers="openDate"]')
+		
+		assignments = {}
+		j=0
+		for title in titles:
+			titlee = title[0][0].text.strip()
+			status = statuss[j].text.strip()
+			dueDate = dueDates[j].text.strip()
+			openDate = openDates[j].text.strip()
+			assignments[j] = {'title':titlee, 'status':status, 'dueDate':dueDate, 'openDate':openDate}
+			j = j+1
+
+		classes[i] = {'name':class_name, 'id':class_id, 'assignments':assignments}
+		i = i+1
+	print type(classes)
+
+
 
 if __name__ == "__main__":
     main()

@@ -25,9 +25,9 @@ def start(func):
 	try:
 		func()
 		cleanTmpDir()
-	except Exception:
+	except Exception as e:
 		# when a module throws an error and does not handle it
-		respond("", "ERROR: Module failed; exception not handled by module")
+		respond("", "ERROR: Module failed; exception not handled by module=> "+str(e))
 
 def verifyFile(file_data):
 	file_path = str(os.getcwd())+"/tmp/"+file_data['name']
