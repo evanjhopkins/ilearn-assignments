@@ -18,7 +18,7 @@ def main():
 	# filling out login form
 	br.select_form(nr=0)
 	br["username"] = "steh"
-	br["password"] = "evantoni"
+	br["password"] = "xxxxx"
 
 	# submit form, redirects to ilearn homepage
 	response = br.submit()
