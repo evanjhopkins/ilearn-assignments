@@ -19,7 +19,7 @@ def error(error_msg):
 
 def respond(data_dict, error):
 	reply_data = { 'data': data_dict,'error': error }
-	print reply_data
+	print json.dumps(reply_data, separators=(',',':'))
 
 def start(func):
 	try:
