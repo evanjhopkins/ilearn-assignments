@@ -3,6 +3,7 @@ import mechanize
 import sys
 from lxml import html
 import phyth
+from datetime import datetime
 
 def main():
 	phyth.start(function)
@@ -27,7 +28,7 @@ def function():
 	br.select_form(nr=0)
 	br["username"] = uname
 	br["password"] = pword
-	
+
 	# submit form, redirects to ilearn homepage
 	response = br.submit()
 
@@ -84,13 +85,17 @@ def function():
 			titlee = title[0][0].text.strip()
 			status = statuss[j].text.strip()
 			dueDate = dueDates[j].text.strip()
+			dueDate = str(datetime.strptime(dueDate, '%b %d, %Y %I:%M %p'))
 			openDate = openDates[j].text.strip()
+			openDate = str(datetime.strptime(openDate, '%b %d, %Y %I:%M %p'))
+
 			assignments[j] = {'title':titlee, 'status':status, 'dueDate':dueDate, 'openDate':openDate}
 			j = j+1
 
 		classes[i] = {'name':class_name, 'id':class_id, 'assignments':assignments}
 		i = i+1
 	phyth.respond(classes, "")
+
 
 if __name__ == "__main__":
     main()

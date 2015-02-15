@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html>
 <head>
 </head>
@@ -8,7 +11,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">Pretty iLearn</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -24,6 +27,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 <?php
+
 if(isset($_POST['username']) && isset($_POST['password'])){
   $url = 'http://evanjhopkins.com/ilearn-assignments/phyth/phyth.php';
   $options = array(
