@@ -46,11 +46,24 @@ if(isset($_POST['username']) && isset($_POST['password'])){
   foreach ($result->data as $aclass){
     echo "<tr bgcolor='#D1D1D1'><th>$aclass->name</th><th>Status</th> <th>Open Date</th><th>Due Date</th></tr>";
     foreach ($aclass->assignments as $assignment){
-      echo "<tr>";
+        $dtime = DateTime::createFromFormat("Y-m-d H:i:s", $assignment->dueDate);
+        $dueStamp = $dtime->getTimestamp();
+        if($assignment->status=="Not Started"){
+          //if not started and due, highlight row
+          if($dueStamp < strtotime('3 days')){
+            //if due in next 3 days, highlight in red
+            echo "<tr bgcolor='#F2DEDE'>";
+          }else{
+            //otherwise highlight in yellow
+            echo "<tr bgcolor='#FCF8E3'>";
+          }  
+        }else{
+          echo "<tr>";
+        }
         echo "<td>&nbsp;&nbsp;&nbsp; $assignment->title </td>";
         echo "<td> $assignment->status </td>";
-        echo "<td> $assignment->openDate </td>";
-        echo "<td> $assignment->dueDate </td>";
+        echo "<td> ".substr($assignment->openDate,0, 16)."</td>";
+        echo "<td> ".substr($assignment->dueDate,0,16)." </td>";
       echo "</tr>";
     }
   }
