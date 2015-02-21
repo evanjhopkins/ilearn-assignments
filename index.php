@@ -6,7 +6,9 @@ session_start();
 </head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
 <link rel="stylesheet" href="css.css">
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"</script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <body>
 <nav class="navbar navbar-default">
@@ -29,7 +31,7 @@ session_start();
 </nav>
 <?php
 
-if(isset($_POST['username']) && isset($_POST['password'])){
+if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['password']) && !empty($_POST['password']) ){
   $url = 'http://evanjhopkins.com/ilearn-assignments/phyth/phyth.php';
   $options = array(
       'http' => array(
@@ -74,9 +76,19 @@ if(isset($_POST['username']) && isset($_POST['password'])){
   <form action="" method="post">
     <input type="text" name="username" placeholder="Username"/>
     <input type="password"name="password" placeholder="Password"/>
-    <input type="submit">
+    <button class="btn btn-success has-spinner">
+      <span class="spinner"><i class="icon-spin icon-refresh"></i></span>
+      Login
+    </button>
   </form>
   </div>
 <?php } ?>
 </body>
 </html>
+<script>
+$(function(){
+    $('a, button').click(function() {
+        $(this).toggleClass('active');
+    });
+});
+</script>
