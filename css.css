@@ -1,3 +1,4 @@
+
 .login{
 	margin-left: auto;
     margin-right: auto;
@@ -38,4 +39,22 @@
 
 .has-spinner.btn-large.active .spinner {
     width: 19px;
+}
+
+
+.navbar-custom {
+    background-color:#9B0516;
+    color:#ffffff;
+    border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color:#B3303F;
+}
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
 }
