@@ -15,7 +15,7 @@ session_start();
 <nav class="navbar navbar-custom">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Pretty iLearn</a>
+      <a class="navbar-brand" href="#">Marist iLearn</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
