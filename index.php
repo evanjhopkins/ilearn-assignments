@@ -46,7 +46,7 @@ if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pass
   $context  = stream_context_create($options);
   $result = file_get_contents($url, false, $context);
   $result = json_decode($result);
-  if(isset($result->error)){
+  if(isset($result->error) && !empty($result->error)){
     echo "<div class='alert alert-danger' role='alert'>$result->error Your login credentials were likely incorrect, or my code just sucks</div>";
   }
 
