@@ -93,6 +93,9 @@ if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pass
 </html>
 <script>
 $(function(){
+    //using js until tweaking is done
+    $('.navbar').css({'margin-bottom':'0px'});
+    
     $('a, button').click(function() {
         $(this).toggleClass('active');
     });
