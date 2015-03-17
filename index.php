@@ -88,6 +88,17 @@ if(isset($_POST['username']) && !empty($_POST['username']) && isset($_POST['pass
     </button>
   </form>
   </div>
+  <div class="overview">
+  &nbsp;&nbsp;&nbsp;&nbsp;The goal of this project is to provide Marist students with an easy way to manage their assigments. 
+  All assignments are listed on a single page under the header of their class title.
+  Assignments due within the week are highlighted in yellow.
+  Assignments due within the next two days are highlighted in red.
+  Below you will find a screenshot of the app in action.
+  To get started simply log in with your Marist account.
+  <a href="http://i.imgur.com/n8MRit6.png">
+    <img class="demo-img"src="http://i.imgur.com/n8MRit6.png">
+  </a>
+  </div>
 <?php } ?>
 </body>
 </html>
